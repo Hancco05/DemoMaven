@@ -2,6 +2,13 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
+    <servlet>
+        <servlet-name>GeneratePdfServlet</servlet-name>
+        <servlet-class>com.saludmental.GeneratePdfServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GeneratePdfServlet</servlet-name>
+        <url-pattern>/generate-pdf</url-pattern>
+    </servlet-mapping>
 </web-app>
