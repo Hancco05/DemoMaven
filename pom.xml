@@ -9,48 +9,53 @@
   <url>http://maven.apache.org</url>
 
   <dependencies>
+    <!-- Dependencia para Apache PDFBox -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>2.0.27</version>
     </dependency>
-    
-    <!-- Dependencia para la generación de PDF con iText -->
-    <dependency>
-      <groupId>com.itextpdf</groupId>
-      <artifactId>itextpdf</artifactId>
-      <version>5.5.13.3</version>
-    </dependency>
-
+    <!-- Dependencia para Servlet API -->
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
         <version>4.0.1</version>
         <scope>provided</scope>
     </dependency>
+    
+</dependencies>
 
-  </dependencies>
 
   <build>
     <plugins>
-        <!-- Plugin para empaquetar la aplicación como WAR -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.4.0</version>
-        </plugin>
+      <!-- Plugin para el compilador de Java -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>  <!-- Java 8 -->
+          <target>1.8</target>  <!-- Java 8 -->
+        </configuration>
+      </plugin>
 
-        <!-- Plugin para ejecutar Tomcat 7 -->
-        <plugin>
-            <groupId>org.apache.tomcat.maven</groupId>
-            <artifactId>tomcat7-maven-plugin</artifactId>
-            <version>2.2</version>
-            <configuration>
-                <path>/</path>
-                <port>8080</port>
-            </configuration>
-        </plugin>
+      <!-- Plugin para empaquetar la aplicación como WAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+      </plugin>
+
+      <!-- Plugin para ejecutar Tomcat 7 -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <path>/</path>
+          <port>8080</port>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
