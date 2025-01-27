@@ -8,17 +8,24 @@
     <!-- Nombre de la aplicación -->
     <display-name>Salud Mental Web</display-name>
 
-    <!-- Declaración del Servlet para la generación del PDF -->
+    <!-- Servlet para generar el PDF -->
     <servlet>
         <servlet-name>GeneratePdfServlet</servlet-name>
         <servlet-class>com.saludmental.GeneratePdfServlet</servlet-class>
-        
     </servlet>
-
-    <!-- Mapeo del Servlet a la URL -->
     <servlet-mapping>
         <servlet-name>GeneratePdfServlet</servlet-name>
-        <url-pattern>/generatePdf</url-pattern> <!-- Aquí se asocia la URL con el servlet -->
+        <url-pattern>/generatePdf</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet para enviar correos -->
+    <servlet>
+        <servlet-name>SendEmailServlet</servlet-name>
+        <servlet-class>com.saludmental.SendEmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SendEmailServlet</servlet-name>
+        <url-pattern>/sendEmail</url-pattern>
     </servlet-mapping>
 
 </web-app>
