@@ -20,12 +20,14 @@
 
     <!-- Servlet para enviar correos -->
     <servlet>
-        <servlet-name>SendEmailServlet</servlet-name>
-        <servlet-class>com.saludmental.SendEmailServlet</servlet-class>
+    <servlet-name>SendEmailServlet</servlet-name>
+    <servlet-class>com.tuPaquete.SendEmailServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>SendEmailServlet</servlet-name>
-        <url-pattern>/sendEmail</url-pattern>
+        <url-pattern>/sendEmailServlet</url-pattern>
     </servlet-mapping>
+
 
 </web-app>

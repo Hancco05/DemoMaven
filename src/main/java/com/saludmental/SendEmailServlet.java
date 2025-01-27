@@ -1,50 +1,54 @@
 package com.saludmental;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.mail.*;
 import javax.mail.internet.*;
-import java.util.Properties;
+import java.io.*;
+import java.util.*;
 
-@WebServlet("/sendEmail")
+@WebServlet("/sendEmailServlet")
 public class SendEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String to = request.getParameter("email");
+        // Recibir parámetros del formulario
+        String to = request.getParameter("to");
         String subject = request.getParameter("subject");
-        String messageBody = request.getParameter("message");
+        String messageText = request.getParameter("message");
 
-        final String fromEmail = "tu_correo@gmail.com";
-        final String password = "tu_contraseña"; // Reemplázala por la contraseña de la app de Gmail
+        // Configuración de Gmail
+        final String from = "tu-correo@gmail.com"; // Tu correo de Gmail
+        final String password = "tu-contraseña"; // Tu contraseña de Gmail
 
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+        // Configuración del servidor SMTP de Gmail
+        String host = "smtp.gmail.com";
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
 
-        Session session = Session.getInstance(props, new Authenticator() {
+        // Obtener la sesión de correo
+        Session session = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(fromEmail, password);
+                return new PasswordAuthentication(from, password);
             }
         });
 
         try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromEmail));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            // Crear el mensaje MIME
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject(subject);
-            message.setText(messageBody);
+            message.setText(messageText);
 
+            // Enviar el correo
             Transport.send(message);
-            response.getWriter().println("Correo enviado exitosamente a: " + to);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
+
+            // Responder al usuario con un mensaje de éxito
+            response.getWriter().println("<h3>Correo enviado con éxito!</h3>");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+            response.getWriter().println("<h3>Error al enviar el correo. Intenta nuevamente.</h3>");
         }
     }
 }

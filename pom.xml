@@ -1,6 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
   <modelVersion>4.0.0</modelVersion>
+  
   <groupId>com.saludmental</groupId>
   <artifactId>DemoMaven</artifactId>
   <packaging>war</packaging>
@@ -16,7 +18,7 @@
         <version>2.0.27</version>
     </dependency>
     
-    <!-- Dependencia para Servlet API -->
+    <!-- Dependencia para Servlet API (debe ser proporcionada por el contenedor) -->
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
@@ -24,12 +26,13 @@
         <scope>provided</scope>
     </dependency>
     
-    <!-- Dependencia para Jakarta Mail (JavaMail) -->
+    <!-- Dependencia para JavaMail -->
     <dependency>
         <groupId>com.sun.mail</groupId>
-        <artifactId>jakarta.mail</artifactId>
-        <version>1.6.7</version>
+        <artifactId>javax.mail</artifactId>
+        <version>1.6.2</version>
     </dependency>
+
   </dependencies>
 
   <build>
@@ -55,7 +58,7 @@
       <!-- Plugin para ejecutar Tomcat 7 -->
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat8-maven-plugin</artifactId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
           <path>/</path>

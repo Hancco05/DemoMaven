@@ -14,8 +14,8 @@
             <h1>Bienestar y Salud Mental en Chile</h1>
         </header>
         <h1>Bienvenido a la aplicación</h1>
-        
-        <p><a href="emailForm.jsp">Ir a enviar un correo</a></p>
+
+        <p><a href="sendEmail.jsp">Ir a enviar un correo</a></p>
 
         <section class="content">
             <h2>¿Por qué es importante la salud mental?</h2>

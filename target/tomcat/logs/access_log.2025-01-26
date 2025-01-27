@@ -1,0 +1,11 @@
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:57:41 -0300] "GET / HTTP/1.1" 200 3307 http-bio-8080-exec-1 538
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:57:41 -0300] "GET /styles.css HTTP/1.1" 200 1067 http-bio-8080-exec-3 3
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:57:41 -0300] "GET /js/scripts.js HTTP/1.1" 404 977 http-bio-8080-exec-2 3
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:57:41 -0300] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-5 1
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:57:43 -0300] "GET /emailForm.jsp HTTP/1.1" 404 977 http-bio-8080-exec-6 1
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:57:50 -0300] "GET /generatePdf HTTP/1.1" 200 1244 http-bio-8080-exec-7 314
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:58:00 -0300] "GET /emailForm.jsp HTTP/1.1" 404 977 http-bio-8080-exec-8 1
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:58:45 -0300] "GET / HTTP/1.1" 200 3299 http-bio-8080-exec-9 50
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:58:45 -0300] "GET /js/scripts.js HTTP/1.1" 404 977 http-bio-8080-exec-9 1
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:58:46 -0300] "GET /sendEmail.jsp HTTP/1.1" 200 661 http-bio-8080-exec-9 43
+0:0:0:0:0:0:0:1 - - [26/Jan/2025:23:58:59 -0300] "GET /sendEmailServlet%20method=?to=aaaa%40eee&subject=OLA+K+ASE&message=aaaaaaaaa HTTP/1.1" 404 1003 http-bio-8080-exec-9 0
