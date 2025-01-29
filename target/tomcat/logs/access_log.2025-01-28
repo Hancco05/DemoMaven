@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [28/Jan/2025:21:17:16 -0300] "GET / HTTP/1.1" 200 3299 http-bio-8080-exec-1 533
+0:0:0:0:0:0:0:1 - - [28/Jan/2025:21:17:16 -0300] "GET /styles.css HTTP/1.1" 200 2524 http-bio-8080-exec-3 3
+0:0:0:0:0:0:0:1 - - [28/Jan/2025:21:17:16 -0300] "GET /js/scripts.js HTTP/1.1" 404 977 http-bio-8080-exec-2 2
+0:0:0:0:0:0:0:1 - - [28/Jan/2025:21:17:16 -0300] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-5 1
+0:0:0:0:0:0:0:1 - - [28/Jan/2025:21:17:18 -0300] "GET /sendEmail.jsp HTTP/1.1" 200 1107 http-bio-8080-exec-6 46
+0:0:0:0:0:0:0:1 - - [28/Jan/2025:21:17:22 -0300] "GET /index.jsp HTTP/1.1" 200 3299 http-bio-8080-exec-7 2
+0:0:0:0:0:0:0:1 - - [28/Jan/2025:21:17:22 -0300] "GET /js/scripts.js HTTP/1.1" 404 977 http-bio-8080-exec-8 1

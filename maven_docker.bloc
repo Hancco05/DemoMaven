@@ -1,0 +1,75 @@
+# Manual de Inicio para el Proyecto DemoMaven
+
+## 1. Requisitos Previos
+Antes de iniciar el proyecto, asegúrate de tener instalados los siguientes programas:
+
+- [Java JDK 8 o superior](https://www.oracle.com/java/technologies/javase-downloads.html)
+- [Apache Maven](https://maven.apache.org/download.cgi)
+- [Docker](https://www.docker.com/get-started) (Opcional, para ejecutar en contenedor)
+- [Git](https://git-scm.com/) (Opcional, si deseas clonar el repositorio)
+
+## 2. Clonar el Proyecto
+Si el código está alojado en un repositorio, clónalo usando:
+```sh
+ git clone https://github.com/usuario/DemoMaven.git
+ cd DemoMaven
+```
+
+## 3. Compilar y Construir el Proyecto
+Ejecuta los siguientes comandos en la terminal dentro de la carpeta del proyecto:
+```sh
+mvn clean package
+```
+Esto generará un archivo **.war** dentro de la carpeta `target/`.
+
+## 4. Ejecutar el Proyecto con Tomcat
+Si usas Tomcat localmente, coloca el archivo `DemoMaven.war` en la carpeta `webapps/` de Tomcat y luego inicia el servidor:
+```sh
+cd /ruta/a/tomcat/bin
+./startup.sh  # En Linux/Mac
+startup.bat  # En Windows
+```
+El proyecto estará disponible en: [http://localhost:8080/DemoMaven](http://localhost:8080/DemoMaven)
+
+## 5. Crear una Imagen Docker
+Si deseas empaquetar la aplicación en Docker, sigue estos pasos:
+
+### 5.1 Crear un Dockerfile
+En la raíz del proyecto, crea un archivo llamado `Dockerfile` con el siguiente contenido:
+```dockerfile
+FROM tomcat:9.0
+COPY target/DemoMaven.war /usr/local/tomcat/webapps/
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
+```
+
+### 5.2 Construir la Imagen Docker
+Ejecuta el siguiente comando en la terminal para construir la imagen:
+```sh
+docker build -t demo-maven .
+```
+
+### 5.3 Ejecutar el Contenedor
+```sh
+docker run -d -p 8080:8080 --name demo-maven-container demo-maven
+```
+El proyecto estará disponible en: [http://localhost:8080/DemoMaven](http://localhost:8080/DemoMaven)
+
+## 6. Detener y Eliminar el Contenedor (Opcional)
+Para detener el contenedor:
+```sh
+docker stop demo-maven-container
+```
+Para eliminar el contenedor:
+```sh
+docker rm demo-maven-container
+```
+Para eliminar la imagen Docker:
+```sh
+docker rmi demo-maven
+```
+
+---
+
+Este manual te permite ejecutar el proyecto tanto en un entorno local como en Docker. Si necesitas más detalles, avísame.
+

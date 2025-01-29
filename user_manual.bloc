@@ -1,0 +1,130 @@
+**Manual de Inicio para el Proyecto DemoMaven**
+
+## 1. Requisitos Previos
+Antes de iniciar el proyecto, asegúrate de tener instalados los siguientes programas:
+
+- **Java Development Kit (JDK) 8 o superior**
+  - Puedes verificar la instalación con el comando:
+    ```bash
+    java -version
+    ```
+- **Apache Maven 3.x**
+  - Verifica su instalación con:
+    ```bash
+    mvn -v
+    ```
+- **Apache Tomcat 7 o superior** (si se desea desplegar localmente)
+- **Un IDE compatible** (Eclipse, IntelliJ IDEA, VS Code con extensión Java, NetBeans, etc.)
+
+## 2. Clonar el Repositorio o Crear la Estructura del Proyecto
+Si el proyecto está en un repositorio Git, clónalo con:
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd DemoMaven
+```
+
+Si deseas crear el proyecto manualmente, usa Maven:
+```bash
+mvn archetype:generate -DgroupId=com.saludmental -DartifactId=DemoMaven -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+```
+
+## 3. Configuración del Archivo `pom.xml`
+El archivo `pom.xml` contiene la configuración del proyecto. Debe incluir las siguientes dependencias y plugins:
+
+### Dependencias Principales
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>2.0.27</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+        <version>1.6.2</version>
+    </dependency>
+</dependencies>
+```
+
+### Plugins de Compilación y Despliegue
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+        
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.2</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+        
+        <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
+            <configuration>
+                <path>/</path>
+                <port>8080</port>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+## 4. Construcción y Ejecución del Proyecto
+
+### 4.1. Limpiar y Construir el Proyecto
+Ejecuta los siguientes comandos para limpiar y compilar el proyecto:
+```bash
+mvn clean install
+```
+
+### 4.2. Ejecutar en un Servidor Tomcat
+Si deseas ejecutar el proyecto en Tomcat desde Maven:
+```bash
+mvn tomcat7:run
+```
+Luego, abre un navegador y accede a:
+```
+http://localhost:8080/
+```
+
+## 5. Posibles Errores y Soluciones
+
+| Error | Solución |
+|--------|----------|
+| `JAVA_HOME not set` | Configura la variable `JAVA_HOME` en tu sistema. |
+| `mvn command not found` | Asegúrate de que Maven está instalado y agregado al `PATH`. |
+| `Cannot find servlet API` | Verifica que la dependencia `javax.servlet-api` tiene `scope=provided`. |
+| `Port already in use` | Cambia el puerto en la configuración del plugin de Tomcat o detén el proceso en uso. |
+
+## 6. Despliegue en Producción
+Para generar el archivo WAR para despliegue en un servidor Tomcat manualmente:
+```bash
+mvn package
+```
+El archivo `.war` se generará en `target/DemoMaven.war`. Copia este archivo en la carpeta `webapps` de Tomcat y reinicia el servidor.
+
+---
+Con estos pasos, deberías poder configurar, ejecutar y desplegar el proyecto sin problemas. ¡Buena suerte con el desarrollo!
+
