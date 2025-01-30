@@ -68,7 +68,7 @@ Para eliminar la imagen Docker:
 ```sh
 docker rmi demo-maven
 ```
-
+manual docker maven
 ---
 
 Este manual te permite ejecutar el proyecto tanto en un entorno local como en Docker. Si necesitas más detalles, avísame.
